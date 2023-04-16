@@ -6,7 +6,7 @@
 /*   By: aartiges <aartiges@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 04:07:39 by aartiges          #+#    #+#             */
-/*   Updated: 2023/04/16 06:31:44 by aartiges         ###   ########lyon.fr   */
+/*   Updated: 2023/04/16 06:44:06 by aartiges         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	display_help(int fd)
 \t-4\t\tipv4 only\n\
 \n");
 }
-
 
 void	print_success(t_traceroute *traceroute, t_traceroute_info *info)
 {
@@ -72,4 +71,3 @@ void	print_error(t_traceroute *traceroute)
 		printf("%s", domain);
 	printf(" (%s) %.2lf ms ", ip_str, rtt);
 }
-

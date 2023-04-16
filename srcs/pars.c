@@ -6,7 +6,7 @@
 /*   By: aartiges <aartiges@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 01:46:16 by aartiges          #+#    #+#             */
-/*   Updated: 2023/04/16 05:29:06 by aartiges         ###   ########lyon.fr   */
+/*   Updated: 2023/04/16 06:41:51 by aartiges         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,8 @@ int	parsing(const int argc, const char **argv, t_traceroute *traceroute)
 	}
 	if (traceroute->domain == NULL)
 		return ((dprintf(2, "Usage error: destination require\n") & 0) + 2);
-	if (traceroute->nqueries < 1 || traceroute->ttl < 1 || traceroute->max_ttl < 1)
+	if (traceroute->nqueries < 1 || traceroute->ttl < 1
+		|| traceroute->max_ttl < 1)
 		return (1);
 	return (0);
 }

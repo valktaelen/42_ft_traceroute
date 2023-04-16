@@ -6,7 +6,7 @@
 /*   By: aartiges <aartiges@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 06:03:57 by aartiges          #+#    #+#             */
-/*   Updated: 2023/04/16 05:29:25 by aartiges         ###   ########lyon.fr   */
+/*   Updated: 2023/04/16 06:42:02 by aartiges         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, const char *argv[])
 {
 	t_traceroute	*traceroute;
-	int		ret;
+	int				ret;
 
 	traceroute = get_traceroute();
 	ft_bzero(traceroute, sizeof(t_traceroute));

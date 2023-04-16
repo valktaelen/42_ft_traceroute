@@ -12,6 +12,7 @@ SRCS	:=	srcs/main.c			\
 			srcs/signal.c		\
 			srcs/memory.c		\
 			srcs/network.c		\
+			srcs/i_o_pck.c		\
 
 OBJS	:=	$(SRCS:.c=.o)
 

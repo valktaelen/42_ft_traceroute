@@ -6,7 +6,7 @@
 /*   By: aartiges <aartiges@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 03:01:14 by aartiges          #+#    #+#             */
-/*   Updated: 2023/04/16 05:33:42 by aartiges         ###   ########lyon.fr   */
+/*   Updated: 2023/04/16 06:43:55 by aartiges         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static int	iter_addr(t_traceroute *traceroute, struct addrinfo *result,
 	{
 		sa_in = (struct sockaddr_in *) addr->ai_addr;
 		traceroute->host_addr = *sa_in;
-		inet_ntop(AF_INET, &(traceroute->host_addr.sin_addr), traceroute->ip_str, \
-		INET_ADDRSTRLEN);
+		inet_ntop(AF_INET, &(traceroute->host_addr.sin_addr),
+			traceroute->ip_str, INET_ADDRSTRLEN);
 		traceroute->sockfd = socket(addr->ai_family, SOCK_RAW, IPPROTO_ICMP);
 		if (traceroute->sockfd < 0)
 		{

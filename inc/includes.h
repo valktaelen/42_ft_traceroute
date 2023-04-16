@@ -6,7 +6,7 @@
 /*   By: aartiges <aartiges@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 05:55:55 by aartiges          #+#    #+#             */
-/*   Updated: 2023/04/16 06:33:35 by aartiges         ###   ########lyon.fr   */
+/*   Updated: 2023/04/16 06:49:52 by aartiges         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,29 +77,33 @@ typedef struct s_traceroute_info
 	struct timeval	tv_recv;
 }	t_traceroute_info;
 
-t_traceroute		*get_traceroute(void);
+t_traceroute	*get_traceroute(void);
 
-int			parsing(const int argc, const char **argv, t_traceroute *traceroute);
+int				parsing(const int argc, const char **argv,
+					t_traceroute *traceroute);
 
-int			send_traceroute(t_traceroute *traceroute);
-int			ft_traceroute(t_traceroute *traceroute);
+int				send_traceroute(t_traceroute *tr);
+int				receive_traceroute(t_traceroute *traceroute,
+					t_traceroute_info *infos);
 
-int			init_socket(t_traceroute *traceroute);
+int				ft_traceroute(t_traceroute *traceroute);
 
-uint16_t	compute_icmp_checksum(const void *buff, int length);
-double		get_diff_tv(struct timeval *tv_recv, struct timeval *tv_send);
-int			is_finish(t_traceroute *traceroute);
-int			ft_atoi(const char *str);
+int				init_socket(t_traceroute *traceroute);
 
-void		display_help(int fd);
-void		print_error(t_traceroute *traceroute);
-void		print_success(t_traceroute *traceroute, t_traceroute_info *info);
+uint16_t		compute_icmp_checksum(const void *buff, int length);
+double			get_diff_tv(struct timeval *tv_recv, struct timeval *tv_send);
+int				is_finish(t_traceroute *traceroute);
+int				ft_atoi(const char *str);
 
+void			display_help(int fd);
+void			print_error(t_traceroute *traceroute);
+void			print_success(t_traceroute *traceroute,
+					t_traceroute_info *info);
 
-void		*ft_memcpy(void *dst, const void *src, size_t n);
-void		ft_bzero(void *s, size_t n);
+void			*ft_memcpy(void *dst, const void *src, size_t n);
+void			ft_bzero(void *s, size_t n);
 
-uint16_t	ft_htons(uint16_t n);
-uint16_t	ft_ntohs(uint16_t n);
+uint16_t		ft_htons(uint16_t n);
+uint16_t		ft_ntohs(uint16_t n);
 
 #endif
