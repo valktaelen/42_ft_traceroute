@@ -36,7 +36,7 @@ void	print_success(t_traceroute *traceroute, t_traceroute_info *info)
 		printf("%s %.2lf ms ", traceroute->ip_str, info->rtt);
 		return ;
 	}
-	bzero(domain, NI_MAXHOST);
+	ft_bzero(domain, NI_MAXHOST);
 	if (getnameinfo(&(traceroute->cur_addr), sizeof(struct sockaddr),
 			domain, NI_MAXHOST, NULL, 0, 0))
 		printf("%s", traceroute->ip_str);
@@ -56,14 +56,14 @@ void	print_error(t_traceroute *traceroute)
 	gettimeofday(&tv, NULL);
 	rtt = get_diff_tv(&tv, &(traceroute->timeout));
 	addr = (struct sockaddr_in *)(&traceroute->cur_addr);
-	bzero(ip_str, INET_ADDRSTRLEN);
+	ft_bzero(ip_str, INET_ADDRSTRLEN);
 	inet_ntop(AF_INET, &(addr->sin_addr), ip_str, INET_ADDRSTRLEN);
 	if (!traceroute->trad_name)
 	{
 		printf("%s %.2lf ms ", ip_str, rtt);
 		return ;
 	}
-	bzero(domain, NI_MAXHOST);
+	ft_bzero(domain, NI_MAXHOST);
 	if (getnameinfo(&(traceroute->cur_addr), sizeof(struct sockaddr),
 			domain, NI_MAXHOST, NULL, 0, 0))
 		printf("%s", ip_str);
