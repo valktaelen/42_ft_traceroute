@@ -67,6 +67,8 @@ static int	parse_param(const char **argv, t_traceroute *traceroute, int *i)
 
 static int	iter_flags(const char **argv, t_traceroute *traceroute, int *i)
 {
+	if (!ft_strcmp("--help", argv[*i]))
+		return (1);
 	if (!argv[*i][1] || argv[*i][2])
 	{
 		dprintf(2, "Error: Unknown flag %s\n", argv[*i]);
@@ -99,17 +101,15 @@ int	parsing(const int argc, const char **argv, t_traceroute *traceroute)
 			else
 				return (1);
 		}
-		else
-		{
-			if (iter_flags(argv, traceroute, &i))
-				return (1);
-		}
+		else if (iter_flags(argv, traceroute, &i))
+			return (1);
 		++i;
 	}
 	if (traceroute->domain == NULL)
 		return ((dprintf(2, "Usage error: destination require\n") & 0) + 2);
-	if (traceroute->nqueries < 1 || traceroute->ttl < 1
-		|| traceroute->max_ttl < 1)
+	if (traceroute->nqueries < 1 || traceroute->nqueries > 10
+		|| traceroute->ttl < 1 || traceroute->max_ttl < 1
+		|| traceroute->max_ttl > 255 || traceroute->ttl > traceroute->max_ttl)
 		return (1);
 	return (0);
 }

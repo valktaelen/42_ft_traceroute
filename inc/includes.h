@@ -104,6 +104,7 @@ void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			ft_bzero(void *s, size_t n);
 size_t			ft_strlen(const char *str);
 char			*ft_strcpy(char *dst, const char *src);
+int				ft_strcmp(const char *str1, const char *str2);
 
 uint16_t		ft_htons(uint16_t n);
 uint16_t		ft_ntohs(uint16_t n);

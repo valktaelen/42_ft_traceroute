@@ -67,7 +67,7 @@ double	get_diff_tv(struct timeval *tv_recv, struct timeval *tv_send)
 
 int	is_finish(t_traceroute *traceroute)
 {
-	if (traceroute->ttl >= 64 || traceroute->ttl > traceroute->max_ttl)
+	if (traceroute->ttl >= 255 || traceroute->ttl > traceroute->max_ttl)
 		return (1);
 	return (0);
 }
