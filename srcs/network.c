@@ -37,3 +37,19 @@ uint16_t	ft_ntohs(uint16_t n)
 }
 
 #endif
+
+const char	*ft_inet_ntop(int af, const void *src, char *dst, socklen_t size)
+{
+	const struct in_addr	*ipv4_addr = (const struct in_addr *)src;
+	const char				*ipv4_str = inet_ntoa(*ipv4_addr);
+
+	if (af == AF_INET && ipv4_str)
+	{
+		if (ft_strlen(ipv4_str) >= size)
+			return (NULL);
+		ft_strcpy(dst, ipv4_str);
+		return (dst);
+	}
+	else
+		return (NULL);
+}

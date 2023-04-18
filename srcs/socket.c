@@ -20,7 +20,7 @@ static int	iter_addr(t_traceroute *traceroute, struct addrinfo *result,
 	{
 		sa_in = (struct sockaddr_in *) addr->ai_addr;
 		traceroute->host_addr = *sa_in;
-		inet_ntop(AF_INET, &(traceroute->host_addr.sin_addr),
+		ft_inet_ntop(AF_INET, &(traceroute->host_addr.sin_addr),
 			traceroute->ip_str, INET_ADDRSTRLEN);
 		traceroute->sockfd = socket(addr->ai_family, SOCK_RAW, IPPROTO_ICMP);
 		if (traceroute->sockfd < 0)

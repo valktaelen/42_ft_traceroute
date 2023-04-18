@@ -59,7 +59,7 @@ void	print_error(t_traceroute *traceroute)
 	rtt = get_diff_tv(&tv, &(traceroute->timeout));
 	addr = (struct sockaddr_in *)(&traceroute->cur_addr);
 	ft_bzero(ip_str, INET_ADDRSTRLEN);
-	inet_ntop(AF_INET, &(addr->sin_addr), ip_str, INET_ADDRSTRLEN);
+	ft_inet_ntop(AF_INET, &(addr->sin_addr), ip_str, INET_ADDRSTRLEN);
 	if (!traceroute->trad_name)
 	{
 		printf("%s %.2lf ms ", ip_str, rtt);
@@ -98,7 +98,7 @@ void	print_error(t_traceroute *traceroute)
 	rtt = get_diff_tv(&tv, &(traceroute->timeout));
 	addr = (struct sockaddr_in *)(&traceroute->cur_addr);
 	ft_bzero(ip_str, INET_ADDRSTRLEN);
-	inet_ntop(AF_INET, &(addr->sin_addr), ip_str, INET_ADDRSTRLEN);
+	ft_inet_ntop(AF_INET, &(addr->sin_addr), ip_str, INET_ADDRSTRLEN);
 	if (!traceroute->trad_name)
 	{
 		printf("%s %.2lf ms ", ip_str, rtt);

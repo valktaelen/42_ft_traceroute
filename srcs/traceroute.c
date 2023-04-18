@@ -24,6 +24,8 @@ static int	ft_init_traceroute(t_traceroute *traceroute)
 	return (0);
 }
 
+#ifdef BONUS
+
 static int	ft_traceroute_probes(t_traceroute *tr_ro, t_traceroute_info *infos)
 {
 	int	ret;
@@ -52,6 +54,35 @@ static int	ft_traceroute_probes(t_traceroute *tr_ro, t_traceroute_info *infos)
 	}
 	return (0);
 }
+
+#else
+
+static int	ft_traceroute_probes(t_traceroute *tr_ro, t_traceroute_info *infos)
+{
+	int	ret;
+	int	i;
+
+	i = 0;
+	while (i < tr_ro->nqueries)
+	{
+		if (send_traceroute(tr_ro) < 0)
+			continue ;
+		ret = receive_traceroute(tr_ro, infos);
+		if (ret == -1)
+			printf("* ");
+		else if (ret)
+			print_error(tr_ro);
+		else
+		{
+			print_success(tr_ro, infos);
+			tr_ro->end = 1;
+		}
+		++i;
+	}
+	return (0);
+}
+
+#endif
 
 int	ft_traceroute(t_traceroute *traceroute)
 {

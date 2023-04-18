@@ -102,8 +102,12 @@ void			print_success(t_traceroute *traceroute,
 
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			ft_bzero(void *s, size_t n);
+size_t			ft_strlen(const char *str);
+char			*ft_strcpy(char *dst, const char *src);
 
 uint16_t		ft_htons(uint16_t n);
 uint16_t		ft_ntohs(uint16_t n);
+const char		*ft_inet_ntop(int af, const void *src, char *dst,
+					socklen_t size);
 
 #endif

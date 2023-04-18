@@ -44,3 +44,26 @@ void	ft_bzero(void *s, size_t n)
 		index++;
 	}
 }
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str && str[i])
+		++i;
+	return (i);
+}
+
+char	*ft_strcpy(char *dst, const char *src)
+{
+	size_t	i;
+
+	i = 0;
+	while (src && src[i])
+	{
+		dst[i] = src[i];
+		++i;
+	}
+	return (dst);
+}
