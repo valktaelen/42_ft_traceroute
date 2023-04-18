@@ -27,6 +27,8 @@ void	display_help(int fd)
 \n");
 }
 
+#ifdef BONUS
+
 void	print_success(t_traceroute *traceroute, t_traceroute_info *info)
 {
 	char	domain[NI_MAXHOST];
@@ -71,3 +73,39 @@ void	print_error(t_traceroute *traceroute)
 		printf("%s", domain);
 	printf(" (%s) %.2lf ms ", ip_str, rtt);
 }
+
+#else
+
+void	print_success(t_traceroute *traceroute, t_traceroute_info *info)
+{
+	if (!traceroute->trad_name)
+	{
+		printf("%s %.2lf ms ", traceroute->ip_str, info->rtt);
+		return ;
+	}
+	printf("%s", traceroute->ip_str);
+	printf(" (%s) %.2lf ms ", traceroute->ip_str, info->rtt);
+}
+
+void	print_error(t_traceroute *traceroute)
+{
+	struct sockaddr_in	*addr;
+	char				ip_str[INET_ADDRSTRLEN];
+	struct timeval		tv;
+	double				rtt;
+
+	gettimeofday(&tv, NULL);
+	rtt = get_diff_tv(&tv, &(traceroute->timeout));
+	addr = (struct sockaddr_in *)(&traceroute->cur_addr);
+	ft_bzero(ip_str, INET_ADDRSTRLEN);
+	inet_ntop(AF_INET, &(addr->sin_addr), ip_str, INET_ADDRSTRLEN);
+	if (!traceroute->trad_name)
+	{
+		printf("%s %.2lf ms ", ip_str, rtt);
+		return ;
+	}
+	printf("%s", ip_str);
+	printf(" (%s) %.2lf ms ", ip_str, rtt);
+}
+
+#endif

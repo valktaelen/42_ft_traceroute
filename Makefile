@@ -1,7 +1,7 @@
 NAME	:=	ft_traceroute
 
 CC		:=	gcc
-CFLAGS	:=	-Wall -Werror -Wextra -fsanitize=address -g3
+CFLAGS	:=	-Wall -Werror -Wextra -fsanitize=address -g3 -DBONUS
 
 SRCS	:=	srcs/main.c			\
 			srcs/pars.c			\
