@@ -46,7 +46,7 @@ static int	ft_traceroute_probes(t_traceroute *tr_ro, t_traceroute_info *infos)
 		}
 		++i;
 		++(tr_ro->ttl);
-		if (i != tr_ro->nqueries && !is_finish(tr_ro) && !tr_ro->end)
+		if (i != tr_ro->nqueries || !is_finish(tr_ro))
 			usleep(1000000 * tr_ro->sendwait.tv_sec);
 		--(tr_ro->ttl);
 	}

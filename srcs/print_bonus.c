@@ -31,6 +31,7 @@ void	print_success(t_traceroute *traceroute, t_traceroute_info *info)
 {
 	char	domain[NI_MAXHOST];
 
+	setbuf(stdout, NULL);
 	if (!traceroute->trad_name)
 	{
 		printf("%s %.2lf ms ", traceroute->ip_str, info->rtt);
@@ -53,6 +54,7 @@ void	print_error(t_traceroute *traceroute)
 	struct timeval		tv;
 	double				rtt;
 
+	setbuf(stdout, NULL);
 	gettimeofday(&tv, NULL);
 	rtt = get_diff_tv(&tv, &(traceroute->timeout));
 	addr = (struct sockaddr_in *)(&traceroute->cur_addr);

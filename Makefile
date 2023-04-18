@@ -2,7 +2,7 @@ NAME		:=	ft_traceroute
 NAME_BONUS	:=	$(NAME)_bonus
 
 CC		:=	gcc
-CFLAGS	:=	-Wall -Werror -Wextra -fsanitize=address -g3 #-DBONUS
+CFLAGS	:=	-Wall -Werror -Wextra #-fsanitize=address -g3
 
 SRCS_COMMON		:=	srcs/main.c			\
 					srcs/pars.c			\
