@@ -29,18 +29,26 @@ void	display_help(int fd)
 
 void	print_success(t_traceroute *traceroute, t_traceroute_info *info)
 {
+	char	domain[NI_MAXHOST];
+
 	if (!traceroute->trad_name)
 	{
 		printf("%s %.2lf ms ", traceroute->ip_str, info->rtt);
 		return ;
 	}
-	printf("%s", traceroute->ip_str);
-	printf(" %.2lf ms ", info->rtt);
+	ft_bzero(domain, NI_MAXHOST);
+	if (getnameinfo(&(traceroute->cur_addr), sizeof(struct sockaddr),
+			domain, NI_MAXHOST, NULL, 0, 0))
+		printf("%s", traceroute->ip_str);
+	else
+		printf("%s", domain);
+	printf(" (%s) %.2lf ms ", traceroute->ip_str, info->rtt);
 }
 
 void	print_error(t_traceroute *traceroute)
 {
 	struct sockaddr_in	*addr;
+	char				domain[NI_MAXHOST];
 	char				ip_str[INET_ADDRSTRLEN];
 	struct timeval		tv;
 	double				rtt;
@@ -55,6 +63,11 @@ void	print_error(t_traceroute *traceroute)
 		printf("%s %.2lf ms ", ip_str, rtt);
 		return ;
 	}
-	printf("%s", ip_str);
-	printf(" %.2lf ms ", rtt);
+	ft_bzero(domain, NI_MAXHOST);
+	if (getnameinfo(&(traceroute->cur_addr), sizeof(struct sockaddr),
+			domain, NI_MAXHOST, NULL, 0, 0))
+		printf("%s", ip_str);
+	else
+		printf("%s", domain);
+	printf(" (%s) %.2lf ms ", ip_str, rtt);
 }

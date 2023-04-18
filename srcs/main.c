@@ -19,7 +19,7 @@ int	main(int argc, const char *argv[])
 
 	traceroute = get_traceroute();
 	ft_bzero(traceroute, sizeof(t_traceroute));
-	traceroute->timeout.tv_sec = 1;
+	traceroute->timeout.tv_usec = 500000;
 	traceroute->ttl = 1;
 	traceroute->max_ttl = 30;
 	traceroute->nqueries = 3;

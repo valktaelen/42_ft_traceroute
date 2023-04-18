@@ -45,6 +45,10 @@ static int	ft_traceroute_probes(t_traceroute *tr_ro, t_traceroute_info *infos)
 			tr_ro->end = 1;
 		}
 		++i;
+		++(tr_ro->ttl);
+		if (i != tr_ro->nqueries && !is_finish(tr_ro) && !tr_ro->end)
+			usleep(1000000 * tr_ro->sendwait.tv_sec);
+		--(tr_ro->ttl);
 	}
 	return (0);
 }
